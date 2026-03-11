@@ -37,31 +37,31 @@ Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout')
 // ── ADMIN ROUTES ──
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Services
-    Route::resource('services', AdminServiceController::class);
+Route::resource('services', AdminServiceController::class);
 
     // Contacts
-    Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.index');
-    Route::get('/contacts/{contact}', [AdminContactController::class, 'show'])->name('contacts.show');
-    Route::delete('/contacts/{contact}', [AdminContactController::class, 'destroy'])->name('contacts.destroy');
-    Route::patch('/contacts/{contact}/read', [AdminContactController::class, 'markRead'])->name('contacts.read');
+Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.index');
+Route::get('/contacts/{contact}', [AdminContactController::class, 'show'])->name('contacts.show');
+Route::delete('/contacts/{contact}', [AdminContactController::class, 'destroy'])->name('contacts.destroy');
+Route::patch('/contacts/{contact}/read', [AdminContactController::class, 'markRead'])->name('contacts.read');
 
     // Testimonials
-    Route::resource('testimonials', AdminTestimonialController::class);
+Route::resource('testimonials', AdminTestimonialController::class);
 
     // Portfolio
-    Route::resource('portfolio', AdminPortfolioController::class);
+Route::resource('portfolio', AdminPortfolioController::class);
 
     // Orders
-    Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');
-    Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
-    Route::patch('/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.status');
-    Route::delete('/orders/{order}', [AdminOrderController::class, 'destroy'])->name('orders.destroy');
+Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');
+Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
+Route::patch('/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.status');
+Route::delete('/orders/{order}', [AdminOrderController::class, 'destroy'])->name('orders.destroy');
 
     // Profile
-    Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile');
-    Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
-    Route::patch('/profile/password', [AdminProfileController::class, 'updatePassword'])->name('profile.password');
+Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile');
+Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
+Route::patch('/profile/password', [AdminProfileController::class, 'updatePassword'])->name('profile.password');
 });
