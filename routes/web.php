@@ -41,6 +41,15 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
     // Services
 Route::resource('services', AdminServiceController::class);
+    // edit
+Route::get('/buat-link-storage', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+        return 'Sukses! Symlink storage berhasil dibuat.';
+    } catch (\Exception $e) {
+        return 'Gagal: ' . $e->getMessage();
+    }
+});
 
     // Contacts
 Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.index');
