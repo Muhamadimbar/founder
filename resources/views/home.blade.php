@@ -295,7 +295,7 @@
                     <p class="service-card-desc">{{ $service->description }}</p>
                     <div class="service-card-footer">
                         <span class="service-price-tag">{{ $service->price ?? 'Hubungi Kami' }}</span>
-                        <div class="service-arrow"><i data-lucide="arrow-right" size="14"></i></div>
+                        <a href="{{ route('order') }}" class="service-arrow"><i data-lucide="arrow-right" size="14"></i></a>
                     </div>
                 </div>
             </div>
