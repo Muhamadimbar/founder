@@ -39,10 +39,9 @@ class AdminServiceController extends Controller
             'is_active'   => $request->has('is_active'),
         ];
 
-        if ($request->hasFile('image')) {
-            $file     = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $data['image'] = $file->storeAs('services', $filename, 'public');
+       if ($request->hasFile('image')) {
+            // Laravel akan otomatis membuat nama file acak yang aman (tanpa spasi)
+            $data['image'] = $request->file('image')->store('services', 'public');
         }
 
         Service::create($data);
@@ -72,13 +71,13 @@ class AdminServiceController extends Controller
             'is_active'   => $request->has('is_active'),
         ];
 
+        // PERBAIKAN DI SINI
         if ($request->hasFile('image')) {
             if ($service->image) {
                 Storage::disk('public')->delete($service->image);
             }
-            $file     = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $data['image'] = $file->storeAs('services', $filename, 'public');
+            // Menggunakan store() agar nama file aman dari spasi
+            $data['image'] = $request->file('image')->store('services', 'public');
         }
 
         if ($request->has('remove_image') && $service->image) {
