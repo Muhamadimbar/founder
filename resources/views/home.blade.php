@@ -315,15 +315,15 @@
             <div class="divider center"></div>
         </div>
         <div class="testimonials-grid">
-            @forelse($testimonials as $t)
+            @forelse($testimonials as $testimonial)
             <div class="testimonial-card">
                 <div class="t-stars">
-                    @for($i=1;$i<=5;$i++)<i data-lucide="star" size="13" style="{{ $i<=$t->rating ? 'fill:var(--gold);color:var(--gold)' : 'color:var(--border2)' }};"></i>@endfor
+                     @for($i=1;$i<=5;$i++)<i data-lucide="star" size="13" style="{{ $i<=$testimonial->rating ? 'fill:var(--gold);color:var(--gold)' : 'color:var(--border2)' }};"></i>@endfor
                 </div>
-                <p class="t-text">"{{ $t->message }}"</p>
+                <div class="t-text">"{{ $testimonial->message }}"</div>
                 <div class="t-author">
-                    <div class="t-avatar">{{ substr($t->name,0,1) }}</div>
-                    <div><div class="t-name">{{ $t->name }}</div><div class="t-role">{{ $t->role }}</div></div>
+                    <div class="t-avatar">{{ substr($testimonial->name,0,1) }}</div>
+                    <div><div class="t-name">{{ $testimonial->name }}</div><div class="t-role">{{ $testimonial->role }}</div></div>
                 </div>
             </div>
             @empty
