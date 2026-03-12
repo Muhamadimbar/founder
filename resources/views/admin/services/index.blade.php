@@ -28,7 +28,7 @@
                     <td style="color:var(--muted);">{{ $i + 1 }}</td>
                     <td>
                         @if($service->image)
-                            <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}"
+                            <img src="{{asset('storage/' . str_replace(' ', '%20', $service->image))}}" alt="{{ $service->name }}"
                                 style="width:52px;height:52px;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
                         @else
                             <div style="width:52px;height:52px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);">
