@@ -55,7 +55,7 @@
         <div class="service-full-card">
             @if($service->image)
             <div style="margin:-2.5rem -2.5rem 2rem;border-radius:20px 20px 0 0;overflow:hidden;height:200px;">
-                <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}"
+                <img src="{{ asset('storage/' . str_replace(' ', '%20', $service->image)) }}" alt="{{ $service->name }}"
                     style="width:100%;height:100%;object-fit:cover;">
             </div>
             @endif
